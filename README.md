@@ -54,12 +54,54 @@ We noticed that our application is blank because we didn't provide in our docker
 <img width="743" height="342" alt="image" src="https://github.com/user-attachments/assets/34a8d075-086e-44c4-81f9-49dbbb672c62" />
 
 
+Open a web browser and navigate to TMDB (The Movie Database) website.
+Click on "Login" and create an account.
+Once logged in, go to your profile and select "Settings."
+Click on "API" from the left-side panel.
+Create a new API key by clicking "Create" and accepting the terms and conditions.
+Provide the required basic details and click "Submit."
+You will receive your TMDB API key.
+
+# Integrate API
+Now, let's create our new image with our API after deleting all present containers with the command:  docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
+
+<img width="1257" height="373" alt="image" src="https://github.com/user-attachments/assets/afb2e906-147c-4018-921a-731774bb4add" />
+
+# Phase 2: Add security on our running application
+
+- Install SonarQube and Trivy:
+
+Sonarqube
+
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+To access:
+
+<img width="905" height="136" alt="image" src="https://github.com/user-attachments/assets/c292d0d9-0795-4704-9450-a8136c520910" />
 
 
+Now that Sonarqube is installed, let's access the application on publicIP:9000 (by default username & password is admin)
+
+<img width="500" height="257" alt="image" src="https://github.com/user-attachments/assets/a890eedc-57cd-4770-8940-222f6033b3a2" />
 
 
+To install Trivy:
 
+sudo apt-get install wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy        
+to scan image using trivy
 
+Trivy is installed
+<img width="831" height="116" alt="image" src="https://github.com/user-attachments/assets/93125063-60e9-44ac-aee2-b488ab57ffd1" />
+
+To scan an image, just run the command trivy image <imageid>
+
+# Phase 3 CI/CD Set Up
+
+- Install Jenkins
+  
 
 
 
