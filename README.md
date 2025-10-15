@@ -102,8 +102,49 @@ To scan an image, just run the command trivy image <imageid>
 
 - Install Jenkins
   
+<img width="471" height="150" alt="image" src="https://github.com/user-attachments/assets/badc68d5-30c2-43a0-9679-a6e6e3a52d47" />
+
+Let's check if Jenkins is accessible on port 8080
+
+<img width="1108" height="407" alt="image" src="https://github.com/user-attachments/assets/84958b3f-1c6c-4269-ba51-e2be88c67d64" />
+
+Open the secret Jenkins file to Generate the password. Now we have access to our Jenkins and we can install all the necessaries plugins.
 
 
+- Install Necessary Plugins in Jenkins:
+
+Goto Manage Jenkins →Plugins → Available Plugins → Install below plugins:
+   
+   Eclipse Temurin Installer (Install without restart), SonarQube Scanner (Install without restart), NodeJs Plugin (Install Without restart), Email Extension Plugin
+
+<img width="767" height="232" alt="image" src="https://github.com/user-attachments/assets/830b475c-6ef1-4506-a0cd-168223b44156" />
 
 
+- Configure Java and Nodejs in Global Tool Configuration
+  
+Goto Manage Jenkins → Tools → Install JDK(17) and NodeJs(16)→ Click on Apply and Save
 
+- Configure SonarQube
+Administration-Security-Users
+
+<img width="837" height="225" alt="image" src="https://github.com/user-attachments/assets/8b1902a7-62ee-4bee-8ba2-f358ade6a29c" />
+
+Create the token. Copy the token. Goto Jenkins Dashboard → Manage Jenkins → Credentials → Add Secret Text. It should look like this
+
+<img width="862" height="212" alt="image" src="https://github.com/user-attachments/assets/099294e0-08d7-4a01-bd27-6e366c66e58a" />
+
+The Sonar Token is created
+
+<img width="1266" height="145" alt="image" src="https://github.com/user-attachments/assets/c1c25a6a-dc2b-4134-b426-7106cb1e98e7" />
+
+
+The Configure System option is used in Jenkins to configure different server
+
+Global Tool Configuration is used to configure different tools that we install using Plugins
+
+We will install a sonar scanner in the tools.
+
+Create a Jenkins webhook
+
+Configure CI/CD Pipeline in Jenkins:
+Create a CI/CD pipeline in Jenkins to automate your application deployment.
