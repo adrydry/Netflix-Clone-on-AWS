@@ -63,6 +63,7 @@ Provide the required basic details and click "Submit."
 You will receive your TMDB API key.
 
 # Integrate API
+
 Now, let's create our new image with our API after deleting all present containers with the command:  docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
 
 <img width="1257" height="373" alt="image" src="https://github.com/user-attachments/assets/afb2e906-147c-4018-921a-731774bb4add" />
@@ -70,8 +71,6 @@ Now, let's create our new image with our API after deleting all present containe
 # Phase 2: Add security on our running application
 
 - Install SonarQube and Trivy:
-
-Sonarqube
 
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 To access:
@@ -91,7 +90,6 @@ wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-k
 echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
 sudo apt-get update
 sudo apt-get install trivy        
-to scan image using trivy
 
 Trivy is installed
 <img width="831" height="116" alt="image" src="https://github.com/user-attachments/assets/93125063-60e9-44ac-aee2-b488ab57ffd1" />
@@ -137,12 +135,12 @@ The Sonar Token is created
 
 <img width="1266" height="145" alt="image" src="https://github.com/user-attachments/assets/c1c25a6a-dc2b-4134-b426-7106cb1e98e7" />
 
+- Configuration of Sonar token
 
-The Configure System option is used in Jenkins to configure different server
+Go to manage Jenkins-System-Add Sonarqube and paste the Sonarqube website url. After that go to Manage Jenkins-Tools-Add Sonarqube (Sonarqube Scanner)
 
-Global Tool Configuration is used to configure different tools that we install using Plugins
+Our pipeline is ready to be deployed
 
-We will install a sonar scanner in the tools.
 
 Create a Jenkins webhook
 
